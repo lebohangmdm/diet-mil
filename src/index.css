@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .link {
+    @apply text-xl text-greyish-1 font-medium capitalize hover:text-greenish-1 cursor-pointer;
+  }
+
+  .menu-link {
+    @apply text-lg text-greyish-1 font-medium hover:bg-green-500 hover:text-white px-8 rounded-r-2xl;
+  }
+}
