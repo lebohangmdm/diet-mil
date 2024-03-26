@@ -1,5 +1,4 @@
 import { CiBookmark } from "react-icons/ci";
-import { MdMenu } from "react-icons/md";
 
 const Header = () => {
   return (
@@ -53,9 +52,6 @@ const Header = () => {
                 className="input input-bordered w-[250px] max-w-sm  rounded-xl outline-none focus:ring-2 focus:ring-greenish-2"
               />
             </form>
-            <a href="" className="text-3xl text-greenish-1">
-              <CiBookmark />
-            </a>
           </div>
 
           <div className="dropdown dropdown-left hidden">

@@ -2,12 +2,8 @@ import React from "react";
 
 const Recipes = () => {
   return (
-    <section className="">
+    <section className="pt-10">
       <div className="container px-4 mx-auto md:px-8">
-        <div className="my-4 md:my-6 text-center">
-          <h1 className="text-2xl md:text-4xl">Recipes</h1>
-        </div>
-
         <p className="text-lg md:text-xl mb-8 max-w-sm lg:text-2xl lg:max-w-md">
           Start searching for your perfect recipes. So you can make a delicious
           dish 😋
