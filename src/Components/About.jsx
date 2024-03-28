@@ -23,7 +23,7 @@ const About = () => {
               </p>
             </div>
           </div>
-          <div className="md:w-[35%] lg:w-[40%]">
+          <div className="md:w-[35%] h-[200px] md:h[300px]  lg:w-[40%]">
             <img src="lasagne.webp" alt="lasagne" className="object-cover" />
           </div>
         </div>

@@ -1,4 +1,5 @@
 import { CiBookmark } from "react-icons/ci";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -7,17 +8,24 @@ const Header = () => {
         <div className="flex items-center justify-between">
           <div className="navbar gap-8">
             <div className="">
-              <a className="text-xl font-semibold text-greenish-1 italic cursor-pointer hover:opacity-50">
+              <Link
+                to={"/"}
+                className="text-xl font-semibold text-greenish-1 italic cursor-pointer hover:opacity-50"
+              >
                 🍴 Diet-mil
-              </a>
+              </Link>
             </div>
             <div className="flex-none hidden lg:block">
               <ul className="menu menu-horizontal px-1 flex gap-12">
                 <li>
-                  <a className="nav-link no-underline ">My Recipes</a>
+                  <Link to={"bookmarks"} className="nav-link no-underline ">
+                    My Recipes
+                  </Link>
                 </li>
                 <li>
-                  <a className="nav-link no-underline">About Us</a>
+                  <Link to={"about"} className="nav-link no-underline">
+                    About Us
+                  </Link>
                 </li>
                 <li>
                   <details className="dropdown">

@@ -8,11 +8,13 @@ import Bookmarks from "./Components/Bookmarks";
 import RecipeDetails, {
   loader as detailsLoader,
 } from "./Components/RecipeDetails";
+import Error from "./Components/Error";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
+    errorElement: <Error />,
     children: [
       {
         index: true,
@@ -26,11 +28,13 @@ const router = createBrowserRouter([
       {
         path: "bookmarks",
         element: <Bookmarks />,
+        errorElement: <Error />,
       },
       {
         path: "recipes/:id",
         element: <RecipeDetails />,
         loader: detailsLoader,
+        errorElement: <Error />,
       },
     ],
   },
