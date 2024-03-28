@@ -6,7 +6,7 @@ const Recipes = () => {
   const { results: recipes, totalResults } = useLoaderData();
   console.log(recipes);
   return (
-    <section className="pt-10">
+    <section className="pt-12 lg:pt-16">
       <div className="container px-4 mx-auto md:px-8">
         <p className="text-lg md:text-xl mb-8 max-w-sm lg:text-2xl lg:max-w-md">
           Start searching for your perfect recipes. So you can make a delicious

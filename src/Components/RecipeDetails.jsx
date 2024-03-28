@@ -3,38 +3,35 @@ import { IoPeopleSharp } from "react-icons/io5";
 import { useLoaderData, useParams } from "react-router-dom";
 import { IoMdCheckmark } from "react-icons/io";
 import { CiBookmarkPlus, CiBookmarkMinus } from "react-icons/ci";
+import { UseGlobalContext } from "../context";
 
 const RecipeDetails = () => {
   const { id } = useParams();
-  console.log(id);
+  const { addRecipe, deleteRecipe, recipes } = UseGlobalContext();
   const {
     readyInMinutes,
     servings,
     extendedIngredients,
     title,
     image,
-
     analyzedInstructions,
   } = useLoaderData();
-
   const steps = analyzedInstructions[0].steps;
+  const itExist = recipes.map((recipe) => recipe.id).includes(id);
 
-  // const item = {
-  //   readyInMinutes: "5",
-  //   servings: "6",
-  //   extendedIngredients: [
-  //     "put yogurt in the freeze",
-  //     "put ice in the freeze",
-  //     "chop the onions",
-  //     "cut the fruits",
-  //   ],
-  //   title: "title",
-  //   instructions:
-  //     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, nesciunt praesentium quis laborum necessitatibus expedita debitis reprehenderit voluptas harum ea!",
-  // };
+  const newRecipe = {
+    id,
+    title,
+    readyInMinutes,
+    image,
+    servings,
+  };
 
-  // const { readyInMinutes, servings, extendedIngredients, title, instructions } =
-  //   item;
+  const handleAddItem = () => {
+    addRecipe(newRecipe);
+  };
+
+  console.log(recipes);
 
   return (
     <section className="pt-12 lg:pt-16">
@@ -62,7 +59,6 @@ const RecipeDetails = () => {
                       <IoMdCheckmark className="text-greenish-1 md:text-2xl" />
                     </span>{" "}
                     {ingredient.original}
-                    {/* {ingredient} */}
                   </p>
                 );
               })}
@@ -75,9 +71,18 @@ const RecipeDetails = () => {
                 alt={title}
                 className="h-[350px] w-full object-cover bg"
               />
-              <button className="text-greenish-1 bg-green-200 rounded-full p-3  font-bold text-2xl md:text-3xl lg:text-4xl absolute top-0 right-1">
-                <CiBookmarkPlus className="" />{" "}
-              </button>
+              {itExist ? (
+                <button
+                  className="bookmark-btn"
+                  onClick={() => deleteRecipe(id)}
+                >
+                  <CiBookmarkMinus />
+                </button>
+              ) : (
+                <button className="bookmark-btn" onClick={handleAddItem}>
+                  <CiBookmarkPlus />
+                </button>
+              )}
             </div>
             <h3 className="text-2xl font-medium mt-4">{title}</h3>
             <h4 className="text-xl font-semibold my-4 ">Method</h4>
@@ -86,7 +91,6 @@ const RecipeDetails = () => {
                 <div key={step.number} className="flex gap-2 md:gap-4">
                   <span className="inline">{step.number}</span>
                   <p key={step.number} className="leading-7 lg:text-lg">
-                    {" "}
                     {step.step}
                   </p>
                 </div>
