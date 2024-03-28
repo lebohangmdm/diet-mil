@@ -11,3 +11,21 @@
     @apply text-lg text-greyish-1 font-medium hover:bg-green-500 hover:text-white px-8 rounded-r-2xl cursor-pointer;
   }
 }
+
+.grid-two-cols {
+  display: grid;
+  grid-template-columns: 60fr 40fr;
+}
+
+.bg-recipe {
+  background-image: linear-gradient(
+      to left,
+      rgba(108, 236, 155, 0.112),
+      rgba(74, 222, 128, 0.164)
+    ),
+    url("/lasagne.webp");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+}

@@ -1,6 +1,10 @@
 import React from "react";
+import { useLoaderData } from "react-router-dom";
+import Recipe from "./Recipe";
 
 const Recipes = () => {
+  const { results: recipes, totalResults } = useLoaderData();
+  console.log(recipes);
   return (
     <section className="pt-10">
       <div className="container px-4 mx-auto md:px-8">
@@ -8,33 +12,28 @@ const Recipes = () => {
           Start searching for your perfect recipes. So you can make a delicious
           dish 😋
         </p>
-        <div className="grid sm:grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-4">
-          <div className="">
-            <img src="lasagne.webp" alt={"lasagne"} className="object-cover" />
-            <div>
-              <p className="mt-4 text-xl font-semibold">{"lasagne"}</p>
-            </div>
-          </div>
-          <div>
-            <img
-              src="lasagne.webp"
-              alt={"lasagne"}
-              className=" object-cover "
-            />
-            <p className="mt-4 text-xl font-semibold">{"lasagne"}</p>
-          </div>
-          <div>
-            <img src="lasagne.webp" alt={"lasagne"} className="object-cover " />
-            <p className="mt-4 text-xl font-semibold">{"lasagne"}</p>
-          </div>
-          <div>
-            <img src="lasagne.webp" alt={"lasagne"} className=" object-cover" />
-            <p className="mt-4 text-xl font-semibold">{"lasagne"}</p>
-          </div>
+        <div className="grid sm:grid-cols-2 gap-4 md:grid-cols-3 md:gap-8 lg:grid-cols-4">
+          {recipes.map((recipe) => {
+            return <Recipe key={recipe.id} recipe={recipe} />;
+          })}
         </div>
       </div>
     </section>
   );
+};
+
+export const loader = async () => {
+  try {
+    const res = await fetch(
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${
+        import.meta.env.VITE_API_KEY
+      }`
+    );
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export default Recipes;

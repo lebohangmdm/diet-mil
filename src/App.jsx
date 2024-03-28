@@ -1,13 +1,13 @@
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Route,
-  Link,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 import AppLayout from "./Components/AppLayout";
-import Recipes from "./Components/Recipes";
+import Recipes, { loader as recipesLoader } from "./Components/Recipes";
+
 import About from "./Components/About";
 import Bookmarks from "./Components/Bookmarks";
+import RecipeDetails, {
+  loader as detailsLoader,
+} from "./Components/RecipeDetails";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +17,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Recipes />,
+        loader: recipesLoader,
       },
       {
         path: "about",
@@ -25,6 +26,11 @@ const router = createBrowserRouter([
       {
         path: "bookmarks",
         element: <Bookmarks />,
+      },
+      {
+        path: "recipes/:id",
+        element: <RecipeDetails />,
+        loader: detailsLoader,
       },
     ],
   },
