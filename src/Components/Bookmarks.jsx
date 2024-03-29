@@ -1,6 +1,7 @@
 import { IoIosTimer } from "react-icons/io";
 import { IoPeopleSharp } from "react-icons/io5";
 import { UseGlobalContext } from "../context";
+import { Link } from "react-router-dom";
 
 const Bookmarks = () => {
   const { recipes } = UseGlobalContext();
@@ -8,7 +9,7 @@ const Bookmarks = () => {
   return (
     <section className="pt-12 lg:pt-16">
       <div className=" px-4 mx-auto max-w-7xl">
-        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 md:gap-8 lg:grid-cols-4">
+        <div className="grid gap-8 sm:grid-cols-2 lg:gap-12 lg:grid-cols-3 xl:grid-cols-4">
           {recipes.map((recipe) => {
             return (
               <div
@@ -34,9 +35,12 @@ const Bookmarks = () => {
                   </div>
 
                   <div className="card-actions justify-start">
-                    <button className="py-2 px-4 text-white bg-greenish-2 text-lg font-medium hover:bg-greenish-1 rounded-lg">
+                    <Link
+                      to={`/recipes/${recipe.id}`}
+                      className="py-2 px-4 text-white bg-greenish-2 text-lg font-medium hover:bg-greenish-1 rounded-lg transition-all duration-150"
+                    >
                       View Details
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>

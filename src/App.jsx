@@ -9,6 +9,7 @@ import RecipeDetails, {
   loader as detailsLoader,
 } from "./Components/RecipeDetails";
 import Error from "./Components/Error";
+import Cuisine, { loader as cuisineLoader } from "./Components/Cuisine";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,11 @@ const router = createBrowserRouter([
         element: <RecipeDetails />,
         loader: detailsLoader,
         errorElement: <Error />,
+      },
+      {
+        path: "cuisine/:cuisine",
+        element: <Cuisine />,
+        loader: cuisineLoader,
       },
     ],
   },

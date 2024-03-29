@@ -1,6 +1,6 @@
 const About = () => {
   return (
-    <section className="pt-16">
+    <section className="pt-10 lg:pt-16">
       <div className="container px-4 mx-auto md:px-8">
         <div className="flex flex-col-reverse gap-4 md:flex-row md:gap-12 lg:gap-16">
           <div className="space-y-2 md:space-y-6 md:w-[70%]">
@@ -23,7 +23,7 @@ const About = () => {
               </p>
             </div>
           </div>
-          <div className="md:w-[35%] h-[200px] md:h[300px]  lg:w-[40%]">
+          <div className="md:w-[35%] lg:w-[40%]">
             <img src="lasagne.webp" alt="lasagne" className="object-cover" />
           </div>
         </div>

@@ -12,7 +12,7 @@ const Recipes = () => {
           Start searching for your perfect recipes. So you can make a delicious
           dish 😋
         </p>
-        <div className="grid sm:grid-cols-2 gap-4 md:grid-cols-3 md:gap-8 lg:grid-cols-4">
+        <div className="grid sm:grid-cols-2 gap-8 md:grid-cols-3 md:gap-12 lg:grid-cols-4">
           {recipes.map((recipe) => {
             return <Recipe key={recipe.id} recipe={recipe} />;
           })}

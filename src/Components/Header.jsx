@@ -1,10 +1,32 @@
-import { CiBookmark } from "react-icons/ci";
 import { Link } from "react-router-dom";
+
+const links = [
+  {
+    id: 1,
+    link: "african",
+  },
+  {
+    id: 2,
+    link: "asian",
+  },
+  {
+    id: 3,
+    link: "european",
+  },
+  {
+    id: 4,
+    link: "italian",
+  },
+  {
+    id: 5,
+    link: "spanish",
+  },
+];
 
 const Header = () => {
   return (
     <header className=" bg-green-200">
-      <div className="container px-4 mx-auto md:px-8">
+      <div className="container px-4 mx-auto md:px-6">
         <div className="flex items-center justify-between">
           <div className="navbar gap-8">
             <div className="">
@@ -28,23 +50,23 @@ const Header = () => {
                   </Link>
                 </li>
                 <li>
-                  <details className="dropdown">
+                  <details className="dropdown dropdown-hover">
                     <summary className="text-greyish-1 text-xl ">
                       Cuisines
                     </summary>
-                    <ul className="py-2 shadow menu dropdown-content z-10  rounded-box rounded-t-none space-y-2 ">
-                      <li>
-                        <a className="menu-link">African</a>
-                      </li>
-                      <li>
-                        <a className="menu-link">Asian</a>
-                      </li>
-                      <li>
-                        <a className="menu-link">Italian</a>
-                      </li>
-                      <li>
-                        <a className="menu-link">Spanish</a>
-                      </li>
+                    <ul className="py-1 shadow menu dropdown-content z-10  rounded-box rounded-t-none space-y-2 ">
+                      {links.map((link) => {
+                        return (
+                          <li key={link.id}>
+                            <Link
+                              to={`cuisine/${link.link}`}
+                              className="menu-link"
+                            >
+                              {link.link}
+                            </Link>
+                          </li>
+                        );
+                      })}
                     </ul>
                   </details>
                 </li>
