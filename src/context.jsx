@@ -5,7 +5,6 @@ const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
   const [recipes, setRecipes] = useState([]);
-  const [query, setQuery] = useState("");
 
   const addRecipe = (newRecipe) => {
     setRecipes((recipes) => [...recipes, newRecipe]);
@@ -18,8 +17,6 @@ export const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
-        query,
-        setQuery,
         recipes,
         addRecipe,
         deleteRecipe,

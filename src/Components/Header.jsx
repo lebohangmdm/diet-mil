@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import SearchForm from "./SearchForm";
 
 const links = [
   {
@@ -74,15 +75,7 @@ const Header = () => {
             </div>
           </div>
 
-          <div className="hidden lg:flex items-center lg:gap-4">
-            <form>
-              <input
-                type="text"
-                placeholder="Search recipes"
-                className="input input-bordered w-[250px] max-w-sm  rounded-xl outline-none focus:ring-2 focus:ring-greenish-2"
-              />
-            </form>
-          </div>
+          <SearchForm />
 
           <div className="dropdown dropdown-left hidden">
             <div tabIndex={0} role="button" className="btn m-1">
