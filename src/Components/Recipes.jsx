@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Recipe from "./Recipe";
+import Pagination from "./Pagination";
 
 const Recipes = () => {
-  const { results: recipes, totalResults } = useLoaderData();
+  const { results: data } = useLoaderData();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recipesPerPage] = useState(10);
+
+  // get current recipes
+  const indexOfLastRecipe = currentPage * recipesPerPage;
+  const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
+  const currentRecipes = data.slice(indexOfFirstRecipe, indexOfLastRecipe);
+
+  const handlePaginate = (pageNumber) => {
+    return setCurrentPage(pageNumber);
+  };
 
   return (
     <section className="pt-12 lg:pt-16">
@@ -15,16 +27,21 @@ const Recipes = () => {
           </p>
 
           <p className="text-base md:text-lg lg:md:text-xl text-center md:text-left ">
-            <strong>{recipes.length}</strong> results
+            <strong>{data.length}</strong> results
           </p>
         </div>
         <div className="grid   sm:grid-cols-2 gap-8 md:grid-cols-3 md:gap-12 lg:grid-cols-4">
-          {recipes.map((recipe) => {
+          {currentRecipes.map((recipe) => {
             return <Recipe key={recipe.id} recipe={recipe} />;
           })}
         </div>
       </div>
-      {/* <Pagination /> */}
+      <Pagination
+        totalRecipes={data.length}
+        pageSize={recipesPerPage}
+        paginate={handlePaginate}
+        currentPage={currentPage}
+      />
     </section>
   );
 };
@@ -35,7 +52,7 @@ export const loader = async ({ request }) => {
 
   try {
     const res = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?query=${searchTerm}&apiKey=${
+      `https://api.spoonacular.com/recipes/complexSearch?query=${searchTerm}&number=100&apiKey=${
         import.meta.env.VITE_API_KEY
       }`
     );
