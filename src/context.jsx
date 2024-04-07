@@ -1,10 +1,11 @@
 import { createContext, useState } from "react";
 import { useContext } from "react";
+import useLocalStorage from "./hooks/useLocalStorage";
 
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  const [recipes, setRecipes] = useState([]);
+  const [recipes, setRecipes] = useLocalStorage([], "watched");
 
   const addRecipe = (newRecipe) => {
     setRecipes((recipes) => [...recipes, newRecipe]);

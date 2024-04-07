@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import SearchForm from "./SearchForm";
 
 const links = [
@@ -41,14 +41,14 @@ const Header = () => {
             <div className="flex-none hidden lg:block">
               <ul className="menu menu-horizontal px-1 flex gap-12">
                 <li>
-                  <Link to={"bookmarks"} className="nav-link no-underline ">
+                  <NavLink to={"bookmarks"} className="nav-link no-underline ">
                     My Recipes
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link to={"about"} className="nav-link no-underline">
+                  <NavLink to={"about"} className="nav-link no-underline">
                     About Us
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
                   <details className="dropdown dropdown-hover">
@@ -59,12 +59,12 @@ const Header = () => {
                       {links.map((link) => {
                         return (
                           <li key={link.id}>
-                            <Link
+                            <NavLink
                               to={`cuisine/${link.link}`}
                               className="menu-link"
                             >
                               {link.link}
-                            </Link>
+                            </NavLink>
                           </li>
                         );
                       })}

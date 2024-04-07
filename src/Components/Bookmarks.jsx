@@ -24,7 +24,7 @@ const Bookmarks = () => {
 
                   <div className="flex justify-between mt-2 mb-8">
                     <div className="flex gap-1">
-                      <IoIosTimer className="text-xl" />
+                      <IoIosTimer className="text-xl text-black" />
                       <p className="text-sm">{recipe.readyInMinutes} minutes</p>
                     </div>
 

@@ -1,12 +1,13 @@
 import { IoIosTimer } from "react-icons/io";
 import { IoPeopleSharp } from "react-icons/io5";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import { IoMdCheckmark } from "react-icons/io";
 import { CiBookmarkPlus, CiBookmarkMinus } from "react-icons/ci";
 import { UseGlobalContext } from "../context";
 
 const RecipeDetails = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const { addRecipe, deleteRecipe, recipes } = UseGlobalContext();
   const {
     readyInMinutes,
@@ -51,40 +52,42 @@ const RecipeDetails = () => {
             <h3 className="text-2xl sm:text-3xl my-8 md:mt-12 lg:text-3xl">
               Recipe Ingredients
             </h3>
-            <div className="grid gap-2 sm:grid-cols-2 md:gap-4 ">
+            <div className="grid gap-2 sm:grid-cols-2 md:gap-4 mb-6 md:mb-8 lg:mb-12 ">
               {extendedIngredients.map((ingredient, i) => {
                 return (
-                  <p key={i} className="flex items-center gap-2 md:text-lg">
+                  <p key={i} className="flex items-center gap-2 lg:text-lg">
                     <span className="inline">
-                      <IoMdCheckmark className="text-greenish-1 md:text-2xl" />
+                      <IoMdCheckmark className="text-greenish-1 lg:text-2xl" />
                     </span>{" "}
                     {ingredient.original}
                   </p>
                 );
               })}
             </div>
+            <button className="btn btn-neutral" onClick={() => navigate(-1)}>
+              Back Home
+            </button>
           </div>
           <div className="order-1 md:order-2">
-            <div className="relative bg-recipe h-[200px] md:h-[300px] lg:h-[350px] ">
-              <img
-                src={image}
-                alt={title}
-                className="h-[350px] w-full object-cover bg"
-              />
+            <div className="relative">
+              <img src={image} alt={title} className="object-cover" />
               {itExist ? (
                 <button
-                  className="bookmark-btn"
+                  className="bookmark-btn absolute  left-2"
                   onClick={() => deleteRecipe(id)}
                 >
                   <CiBookmarkMinus />
                 </button>
               ) : (
-                <button className="bookmark-btn" onClick={handleAddItem}>
+                <button
+                  className="bookmark-btn absolute left-2"
+                  onClick={handleAddItem}
+                >
                   <CiBookmarkPlus />
                 </button>
               )}
             </div>
-            <h3 className="text-2xl font-medium mt-4">{title}</h3>
+            <h3 className="text-2xl font-medium mt-8">{title}</h3>
             <h4 className="text-xl font-semibold my-4 ">Method</h4>
             {steps.map((step) => {
               return (

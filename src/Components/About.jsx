@@ -3,8 +3,8 @@ const About = () => {
     <section className="pt-10 lg:pt-16">
       <div className="container px-4 mx-auto md:px-8">
         <div className="flex flex-col-reverse gap-4 md:flex-row md:gap-12 lg:gap-16">
-          <div className="space-y-2 md:space-y-6 md:w-[70%]">
-            <h1 className="text-2xl font-semibold md:text-3xl lg:text-5xl">
+          <div className="md:w-[60%] lg:w-[50%]">
+            <h1 className="text-2xl mb-4 md:mb-8 font-semibold md:text-3xl lg:text-5xl">
               About us
             </h1>
             <div className="space-y-2 md:space-y-4 lg:max-w-xl">
@@ -23,8 +23,8 @@ const About = () => {
               </p>
             </div>
           </div>
-          <div className="md:w-[35%] lg:w-[40%]">
-            <img src="lasagne.webp" alt="lasagne" className="object-cover" />
+          <div className="md:w-[40%] lg:w-[50%]">
+            <img src="about.webp" alt="about-image" className="object-cover" />
           </div>
         </div>
       </div>

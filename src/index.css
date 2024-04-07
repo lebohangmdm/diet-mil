@@ -22,12 +22,6 @@
 }
 
 .bg-recipe {
-  background-image: linear-gradient(
-      to left,
-      rgba(108, 236, 155, 0.112),
-      rgba(74, 222, 128, 0.164)
-    ),
-    url("/lasagne.webp");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
